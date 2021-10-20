@@ -1,8 +1,10 @@
 const express = require('express');
 const multer = require('multer');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 let app = express();
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors());
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -32,6 +34,6 @@ app.post("/api/upload", function(req, res) {
 
 app.use('/images', express.static('./images'));
 
-app.listen(process.env.PORT || 3000, function(a) {
-    console.log("Listening to port 3000");
+app.listen(process.env.PORT || 3001, function(a) {
+    console.log("Listening to port 3001");
 });
